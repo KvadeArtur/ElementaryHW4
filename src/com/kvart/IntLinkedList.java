@@ -112,10 +112,13 @@ public class IntLinkedList implements IntList, IntQueue, IntStack {
 
         if (size == 0) {
             throw new IllegalArgumentException("Такого елемента не существует");
+        }else if (tmp.next == null){
+            tmp.previous.next = null;
+        }else if (tmp.previous == null){
+            tmp.next.previous = null;
         } else {
             tmp.next.previous = tmp.previous;
             tmp.previous.next = tmp.next;
-            tmp = null;
         }
         size--;
         return true;
@@ -137,6 +140,8 @@ public class IntLinkedList implements IntList, IntQueue, IntStack {
             throw new IllegalArgumentException("Такого елемента не существует");
         } else if (tmp.next == null){
             tmp.previous.next = null;
+        }else if (tmp.previous == null){
+            tmp.next.previous = null;
         } else {
             tmp.next.previous = tmp.previous;
             tmp.previous.next = tmp.next;
